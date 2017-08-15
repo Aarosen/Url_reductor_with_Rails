@@ -1,0 +1,23 @@
+<h1>Bienvenido a Mi Bitly!</h1>
+<p>Este es un una tabla con Urls reducidos</p>
+
+<%= form_tag bitlies_path do %>
+  <p>
+  	Acorta tu URL: Por favor utiliza http:// o https://<br>
+  	<%= label_tag :long_url %><br>
+    <%= text_field_tag :long_url %>
+  </p>
+ 
+  <p>
+    <%= submit_tag "Search" %>
+  </p>
+<% end %>
+
+<% @bitlies.each do |show| %>
+	<ul>
+		<li>
+			<%= show.id %><p>	</p><%= show.long_url %><p>	</p><%= link_to "#{show.short_url}", bitlies_counter_path(show.short_url) %></a><p>	</p><%= show.click_count %>
+		</li>
+	</ul>
+<% end %>
+
